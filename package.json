@@ -1,0 +1,22 @@
+{
+  "name": "mvp-nov",
+  "version": "1.0.0",
+  "description": "MVP Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtang17/mvp-nov.git"
+  },
+  "author": "Jonathan Tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtang17/mvp-nov/issues"
+  },
+  "homepage": "https://github.com/jtang17/mvp-nov#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
