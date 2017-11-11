@@ -1,20 +1,32 @@
 const mongoose = require('mongoose');
 
-let mongoDB = 'mongdb://127.0.0.1/mvp_db';
+let mongoDb = 'mongodb://127.0.0.1/mvp_db';
 mongoose.connect(mongoDb, {useMongoClient: true});
 
 let db = mongoose.connection;
 
-const Schema = mongoose.Schema;
+//DROP DATABASE
 
-const PostsSchema = new Schema({
-  id: {type: Number, unique: true, required: true},
-  user: {type: String, required: true},
-  title: String,
-  time: String,
+// db.on('open', function() {
+//   mongoose.connection.db.dropDatabase(function (err) {
+//     console.log('db dropped');
+//     process.exit(0);
+//   });
+// });
+
+//
+let Schema = mongoose.Schema;
+
+let PostsSchema = new Schema({
+  // id: {type: Number, unique: true, required: true},
+  // user: {type: String, required: true},
+  // title: String,
+  // time: String,
   content: {type: String, required: true}
-});
+}, {timestamps: {createdAt: 'created_at' } });
 
-const Posts = mongoose.model('Posts', PostsSchema);
+mongoose.model('Post', PostsSchema);
+let Post = mongoose.model('Post');
 
-exports.Posts = Posts;
+
+exports.Post = Post;

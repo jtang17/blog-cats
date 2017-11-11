@@ -6,11 +6,26 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      content: ''
+      content: '',
+      blogs: []
     }
+    this.loadBlogs = this.loadBlogs.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
+  loadBlogs() {
+    axios.get('/api/blogs')
+      .then((res) => {
+        console.log('retrieve blogs from server here:');
+        console.log(res.data);
+        this.setState({ blogs: res.data })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
   handleSubmit() {
     let text = this.state.content;
     console.log(text);
@@ -41,6 +56,10 @@ class App extends React.Component {
         </label>
       </form>
       <button onClick={this.handleSubmit}>Submit</button>
+      <button onClick={this.loadBlogs}>Load Blogs</button>
+      {this.state.blogs.map((blog, index) => (
+        <p key={index}>{blog.user} A user wrote {blog.content}</p>
+      ))}
       </div>
     );
   }
