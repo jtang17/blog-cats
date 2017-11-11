@@ -2,3 +2,10 @@ div #bloglist {
   float: right;
   width: 40%;
 }
+
+#main {
+  padding-left: 100px;
+}
+
+h3 {
+}
