@@ -18,10 +18,8 @@ let db = mongoose.connection;
 let Schema = mongoose.Schema;
 
 let PostsSchema = new Schema({
-  // id: {type: Number, unique: true, required: true},
-  // user: {type: String, required: true},
-  // title: String,
-  // time: String,
+  username: {type: String, required: true},
+  title: {type: String},
   content: {type: String, required: true}
 }, {timestamps: {createdAt: 'created_at' } });
 

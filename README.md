@@ -23,7 +23,7 @@ Once the project moves into development, the press release can be used as a touc
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > This is a chatroom.
 
 ## Problem ##
   > Don't want to create a new account? Use BlogAuth!

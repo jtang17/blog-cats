@@ -2,12 +2,29 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var blogs = [];
+// passport.use(new GoogleStrategy({
+//     clientID: '216517576422-p8jk1ufv2ft5nffj64egcn5v8cd4ad1s.apps.googleusercontent.com',
+//     clientSecret: 'ujrwyH7ERrhuuM29Bx00p_5z',
+//     callbackURL: 'http://localhost:1337'
+//   },
+//   (accessToken, refreshToken, profile, done) => {
+//     //do something
+//   }
+// ));
+
+// app.get('/auth/google', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login'] }))
+// app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
+//   (req,res) => {
+//     res.redirect('/');
+//   });
 
 //console.log(__dirname + '/../src/public/');
 app.use(express.static(__dirname + '/../src/public/'));
@@ -29,7 +46,6 @@ app.get('/api/blogs', (req, res) => {
 
 app.post('/api/blogs', (req, res) => {
   console.log(req.body);
-  blogs.push(req.body);
 
   var newPost = new db.Post(req.body);
   newPost.save((err) => {

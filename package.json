@@ -4,8 +4,8 @@
   "description": "MVP Project",
   "main": "index.js",
   "scripts": {
-    "react-dev" : "webpack -d --watch",
-    "server-dev" : "nodemon server/index.js",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +26,8 @@
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.2",
     "mongoose": "^4.13.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "webpack": "^3.8.1"
