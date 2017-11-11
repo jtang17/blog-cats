@@ -18,13 +18,22 @@ let db = mongoose.connection;
 let Schema = mongoose.Schema;
 
 let PostsSchema = new Schema({
-  username: {type: String, required: true},
+  username: {type: String, required: true },
   title: {type: String},
   content: {type: String, required: true}
 }, {timestamps: {createdAt: 'created_at' } });
 
+let UsersSchema = new Schema({
+  id: String,
+  token: String,
+  email: String,
+  name: String
+})
+
+
 mongoose.model('Post', PostsSchema);
 let Post = mongoose.model('Post');
-
+let User = mongoose.model('User', UsersSchema);
 
 exports.Post = Post;
+exports.User = User;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Blog = ({blogs}) => (
+const Blog = ({blogs, clickUser}) => (
   <div id='bloglist'>
     {blogs.map((blog, index) =>
       <div key={index}>
@@ -9,7 +9,8 @@ const Blog = ({blogs}) => (
         </span>
         <br />
         <span>
-          <img src={`https://robohash.org/${blog.username}.jpg?set=set4`} height="50" width="50" />{blog.username} wrote:
+          <img src={`https://robohash.org/${blog.username}.jpg?set=set4`} height="50" width="50" /><br />
+          <span  onClick={() => clickUser(blog.username) }><b>{blog.username}</b></span> wrote:
           <br />
           {blog.created_at}
           <br />

@@ -1,11 +1,16 @@
 div #bloglist {
   float: right;
   width: 40%;
-  border: thin solid black;
 }
 
-#main {
+div #main {
   padding-left: 100px;
+}
+
+div #footer {
+  bottom: 0;
+}
+#footer button {
 }
 
 h3 {
