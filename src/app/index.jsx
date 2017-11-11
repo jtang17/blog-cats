@@ -37,6 +37,7 @@ class App extends React.Component {
     axios.post('/api/blogs', msg)
     .then((res) => { setTimeout(this.loadBlogs, 300); })
     .catch((err) => {console.log(err); });
+    this.setState({ username: '', title: '', content: ''})
   }
 
   handleChange(e, input) {

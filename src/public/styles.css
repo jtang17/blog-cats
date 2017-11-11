@@ -1,6 +1,7 @@
 div #bloglist {
   float: right;
   width: 40%;
+  border: thin solid black;
 }
 
 #main {

@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // passport.use(new GoogleStrategy({
-//     clientID: '216517576422-p8jk1ufv2ft5nffj64egcn5v8cd4ad1s.apps.googleusercontent.com',
-//     clientSecret: 'ujrwyH7ERrhuuM29Bx00p_5z',
+//     clientID: GOOGLE_CLIENT_ID,
+//     clientSecret: GOOGLE_CLIENT_SECRET,
 //     callbackURL: 'http://localhost:1337'
 //   },
 //   (accessToken, refreshToken, profile, done) => {

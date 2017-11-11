@@ -14,6 +14,7 @@ const Blog = ({blogs}) => (
           {blog.created_at}
           <br />
           <p>{blog.content}</p>
+          <button >Edit</button><button>Delete</button>
         </span>
       </div>
     )}
