@@ -32,7 +32,11 @@ class Edit extends React.Component {
           <textarea value={this.state.content} style={{height: 100, width: 350}} onChange={this.handleChange} /> : null
         }
         <br />
-        {this.state.open ? <button onClick={() => this.props.editEntry(this.props.id, this.state.content)}>Submit</button> : null}
+        {this.state.open ? <button onClick={() =>
+          { this.props.editEntry(this.props.id, this.state.content);
+            this.setState({content: '', open: false });
+          }
+        }>Submit</button> : null}
       </div>
 
     );

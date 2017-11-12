@@ -49,8 +49,6 @@ class App extends React.Component {
   }
 
   editEntry(id, content) {
-    console.log(id);
-    console.log(content);
     let entry = {_id: id, content: content};
     axios.post('/api/update', entry)
       .then((res) => { setTimeout(this.loadBlogs, 200); })
@@ -58,6 +56,10 @@ class App extends React.Component {
   }
 
   handleSubmit() {
+    if (this.state.username === '' || this.state.title === '' || this.state.content === '') {
+      alert('All fields are required');
+    }
+
     let msg = {
       username: this.state.username,
       title: this.state.title,
