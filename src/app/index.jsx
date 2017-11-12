@@ -76,7 +76,8 @@ class App extends React.Component {
   }
 
   render() {
-    return (<div id="main">
+    return (
+      <div>
         <h3> Welcome to Blog Auth </h3>
         <Blog blogs={this.state.blogs} clickUser={this.clickUser} deleteEntry={this.deleteEntry} editEntry={this.editEntry} />
         <div id="form">
@@ -100,7 +101,8 @@ class App extends React.Component {
         <div id="footer">
           <button onClick={this.loadBlogs} >Main Page</button>
         </div>
-      </div>);
+      </div>
+    );
   }
 }
 
