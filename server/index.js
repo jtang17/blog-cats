@@ -5,16 +5,60 @@ const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 //const config = require('../config.js');
 const session = require('express-session');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let config;
+if (process.env.NODE_ENV === 'production') {
+  google_id = process.env.GOOGLE_CLIENT_ID;
+  google_secret = process.env.GOOGLE_CLIENT_SECRET;
+  google_callback = 'https://infinite-beach-95526.herokuapp.com/'
+} else {
+  config = require('../config.js');
+  google_id = config.clientId;
+  google_secret = config.clientSecret;
+  google_callback = 'http://localhost:1337';
+}
+
+passport.use(new GoogleStrategy({
+    clientID: google_id,
+    clientSecret: google_secret,
+    callbackURL: google_callback
+  },
+  (accessToken, refreshToken, profile, done) => {
+    process.nextTick(() => {
+      db.User.findOne({ id: profile.id }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (user) {
+          return done(null, user);
+        } else {
+          var newUser = new User({ id: profile.id, token: token.id, name: displayName });
+          newUser.save((err) => {
+            if (err) {
+              throw err;
+            } else {
+              console.log(newUser);
+              return done(null, newUser);
+            }
+          })
+        }
+      })
+    })
+  }
+));
+
+app.get('/auth/google', passport.authenticate('google', {scope: ['https://www.googleapis.com/auth/plus.login'] }))
+app.get('/auth/google/callback', passport.authenticate('google', {successRedirect: '/', failureRedirect: '/auth/google'}))
 
 app.use(express.static(__dirname + '/../src/public/'));
 
-// if token, public/ otherwise res.redirect to google/auth
 
 app.get('/api/blogs', (req, res) => {
   db.Post.find({}).sort({updatedAt: -1}).exec((err, docs) => {
