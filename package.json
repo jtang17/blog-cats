@@ -33,7 +33,7 @@
     "passport-google-oauth": "^1.0.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "webpack": "^3.8.1"
+    "webpack": "^2.2.1"
   },
   "engine" : "node 6.11.5"
 }

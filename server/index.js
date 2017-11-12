@@ -1,29 +1,20 @@
-//const config = require('../config.js');
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
-
+//const config = require('../config.js');
 const session = require('express-session');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(session({
-//   secret: 'thisismybestkeptsecret123',
-//   resave: true,
-//   saveUninitialized: true
-// }));
 
 
-//console.log(__dirname + '/../src/public/');
 app.use(express.static(__dirname + '/../src/public/'));
 
-// if token, res.sendFile, otherwise res.redirect to google/auth
-app.get('/', (req, res) => {
-  res.sendFile('index.html');
-});
+// if token, public/ otherwise res.redirect to google/auth
 
 app.get('/api/blogs', (req, res) => {
   db.Post.find({}).sort({updatedAt: -1}).exec((err, docs) => {
