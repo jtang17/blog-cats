@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Blog from './Blog.jsx'
+import Blog from './Blog.jsx';
+import Users from './Users.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class App extends React.Component {
     }
     this.loadBlogs = this.loadBlogs.bind(this);
     this.clickUser = this.clickUser.bind(this);
+    this.deleteEntry= this.deleteEntry.bind(this);
+    this.editEntry = this.editEntry.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -30,13 +33,29 @@ class App extends React.Component {
           users: [...new Set(res.data.map((obj) => obj.username))]
         })
       })
-      .catch((err) => { console.log(err); })
+      .catch((err) => { console.log(err); });
   }
   clickUser(user) {
     console.log(user);
-    axios.get(`api/user/${user}`)
+    axios.get(`/api/user/${user}`)
       .then((res) => { this.setState({blogs: res.data }) })
-      .catch((err) => { console.error(err); })
+      .catch((err) => { console.error(err); });
+  }
+
+  deleteEntry(id) {
+    let entry = {_id: id};
+    axios.post('/api/delete', entry)
+      .then((res) => { setTimeout(this.loadBlogs, 200); })
+      .catch((err) => { console.error(err); });
+  }
+
+  editEntry(id, content) {
+    console.log(id);
+    console.log(content);
+    let entry = {_id: id, content: content};
+    axios.post('/api/update', entry)
+      .then((res) => { setTimeout(this.loadBlogs, 200); })
+      .catch((err) => { console.error(err); });
   }
 
   handleSubmit() {
@@ -49,7 +68,7 @@ class App extends React.Component {
     axios.post('/api/blogs', msg)
     .then((res) => { setTimeout(this.loadBlogs, 300); })
     .catch((err) => {console.log(err); });
-    this.setState({ username: '', title: '', content: ''})
+    this.setState({ username: '', title: '', content: ''});
   }
 
   handleChange(e, input) {
@@ -59,10 +78,11 @@ class App extends React.Component {
   render() {
     return (
       <div id="main">
+
         <h3> Welcome to Blog Auth </h3>
 
-        <Blog blogs={this.state.blogs} clickUser={this.clickUser}></Blog>
-
+        <Blog blogs={this.state.blogs} clickUser={this.clickUser} deleteEntry={this.deleteEntry} editEntry={this.editEntry} />
+        <div id="form">
         <form onSubmit={this.handleSubmit}>
             User:
             <input type="text" value={this.state.username} onChange={ (e) => this.handleChange(e, 'username')} />
@@ -77,14 +97,14 @@ class App extends React.Component {
             </span>
         </form>
         <button onClick={this.handleSubmit}>Submit</button>
+        </div>
+
         <br />
-        <br />
-        <b>Users:</b>
-        {this.state.users.map((user, index) => <p key={index} onClick={() => this.clickUser(user)}>{user}</p> )}
+
+        <Users users={this.state.users} clickUser={this.clickUser} />
+
         <div id="footer">
-          <center>
           <button onClick={this.loadBlogs} >Main Page</button>
-          </center>
         </div>
       </div>
     );

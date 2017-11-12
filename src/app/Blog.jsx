@@ -1,6 +1,7 @@
 import React from 'react';
+import Edit from './Edit.jsx';
 
-const Blog = ({blogs, clickUser}) => (
+const Blog = ({blogs, clickUser, deleteEntry, editEntry}) => (
   <div id='bloglist'>
     {blogs.map((blog, index) =>
       <div key={index}>
@@ -10,12 +11,13 @@ const Blog = ({blogs, clickUser}) => (
         <br />
         <span>
           <img src={`https://robohash.org/${blog.username}.jpg?set=set4`} height="50" width="50" /><br />
-          <span  onClick={() => clickUser(blog.username) }><b>{blog.username}</b></span> wrote:
+          <span onClick={() => clickUser(blog.username) }><b>{blog.username}</b></span> wrote:
           <br />
           {blog.created_at}
           <br />
           <p>{blog.content}</p>
-          <button >Edit</button><button>Delete</button>
+          <Edit editEntry={editEntry} content={blog.content} id={blog._id} />
+          <button onClick={() => deleteEntry(blog._id)}>Delete</button>
         </span>
       </div>
     )}

@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-let mongoDb = 'mongodb://127.0.0.1/mvp_db';
+let mongoDb = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/mvp_db';
 mongoose.connect(mongoDb, {useMongoClient: true});
-
 let db = mongoose.connection;
 
 //DROP DATABASE

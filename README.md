@@ -23,22 +23,22 @@ Once the project moves into development, the press release can be used as a touc
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
 ## Summary ##
-  > This is a chatroom.
+  > This is a chatting application that assigns the perfect cat avatar for you.
 
 ## Problem ##
-  > Don't want to create a new account? Use BlogAuth!
+  > Don't want to create a new account? Use BlogAuth! Update: Due to popular demand, BlogAuth has become a chat application.
 
 ## Solution ##
-  > Can use your other accounts such as Github, Facebook to blog.
+  > Can use your Google account to log-in.
 
 ## Quote from You ##
   > This is a simple, easy to use blogging interface.
 
 ## How to Get Started ##
-  > Sign-up, log in, then blog!
+  > Sign-up, log in, then write.
 
 ## Customer Quote ##
-  > This is a simple, minimalistic easy blogging interface that I love using.
+  > The cat avatars are the best!
 
 ## Closing and Call to Action ##
   > Get started in seconds and start writing!
