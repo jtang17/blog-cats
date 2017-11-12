@@ -8,7 +8,7 @@
     "server-dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,6 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "webpack": "^3.8.1"
-  }
+  },
+  "engine" : "node 6.11.5"
 }
