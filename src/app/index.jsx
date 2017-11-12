@@ -36,7 +36,6 @@ class App extends React.Component {
       .catch((err) => { console.log(err); });
   }
   clickUser(user) {
-    console.log(user);
     axios.get(`/api/user/${user}`)
       .then((res) => { this.setState({blogs: res.data }) })
       .catch((err) => { console.error(err); });

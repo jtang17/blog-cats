@@ -1,17 +1,26 @@
 div #bloglist {
   float: right;
-  width: 55%;
+  width: 48%;
 }
 
 div #main {
   padding-left: 100px;
 }
 
+div #form {
+
+}
+
 div #footer {
   bottom: 0;
 }
-#footer button {
+
+div #time {
+  font-size: 13px;
 }
 
 h3 {
+}
+
+#footer button {
 }

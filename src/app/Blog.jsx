@@ -1,5 +1,7 @@
 import React from 'react';
 import Edit from './Edit.jsx';
+import Moment from 'react-moment';
+import TimeAgo from 'timeago-react';
 
 const Blog = ({blogs, clickUser, deleteEntry, editEntry}) => (
   <div id='bloglist'>
@@ -11,10 +13,13 @@ const Blog = ({blogs, clickUser, deleteEntry, editEntry}) => (
         <br />
         <span>
           <img src={`https://robohash.org/${blog.username}.jpg?set=set4`} height="50" width="50" /><br />
-          <span onClick={() => clickUser(blog.username) }><b>{blog.username}</b></span> wrote:
+          <span onClick={() => clickUser(blog.username) }><b>@{blog.username}</b></span>
           <br />
-          {blog.created_at}
-          <br />
+          <div id="time">
+            <Moment>{blog.created_at}</Moment>
+            <br />
+            <i><TimeAgo datetime={blog.created_at} /></i>
+          </div>
           <p>{blog.content}</p>
           <Edit editEntry={editEntry} content={blog.content} id={blog._id} />
           <button onClick={() => deleteEntry(blog._id)}>Delete</button>
