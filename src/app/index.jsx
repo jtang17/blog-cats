@@ -77,7 +77,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="main">
         <h3> Welcome to Blog Auth </h3>
         <Blog blogs={this.state.blogs} clickUser={this.clickUser} deleteEntry={this.deleteEntry} editEntry={this.editEntry} />
         <div id="form">
