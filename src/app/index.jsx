@@ -78,9 +78,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="main">
-
         <h3> Welcome to Blog Auth </h3>
-
         <Blog blogs={this.state.blogs} clickUser={this.clickUser} deleteEntry={this.deleteEntry} editEntry={this.editEntry} />
         <div id="form">
         <form onSubmit={this.handleSubmit}>
@@ -98,11 +96,8 @@ class App extends React.Component {
         </form>
         <button onClick={this.handleSubmit}>Submit</button>
         </div>
-
         <br />
-
         <Users users={this.state.users} clickUser={this.clickUser} />
-
         <div id="footer">
           <button onClick={this.loadBlogs} >Main Page</button>
         </div>
