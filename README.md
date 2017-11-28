@@ -1,4 +1,4 @@
-# MVP - NOV #
+# Blog Cats #
 
 <!--
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,7 +17,7 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > BlogAuth
+  > Blog Cats
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
