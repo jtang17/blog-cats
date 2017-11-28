@@ -79,7 +79,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="main">
-        <h3> Welcome to Blog Auth </h3>
+        <h3> Welcome to Blog Cats </h3>
         <Blog blogs={this.state.blogs} clickUser={this.clickUser} deleteEntry={this.deleteEntry} editEntry={this.editEntry} />
         <div id="form">
         <form onSubmit={this.handleSubmit}>
